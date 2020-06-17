@@ -5,7 +5,6 @@
   <!ENTITY owl  "http://www.w3.org/2002/07/owl#">
   <!ENTITY drb  "http://www.gael.fr/drb#">
   <!ENTITY cryosat2 "http://www.esa.int/cryosat2#"> 
-  <!ENTITY img  "http://www.gael.fr/drb/image#">
   <!ENTITY nc "http://www.unidata.ucar.edu/netcdf#">
 ]>
 
@@ -14,8 +13,7 @@
          xmlns:owl  = "&owl;"
          xmlns:nc   = "&nc;"
          xmlns:drb  = "&drb;"
-         xmlns:cryosat2 = "&cryosat2;"
-         xmlns:img  = "&img;">
+         xmlns:cryosat2 = "&cryosat2;">
 
    <owl:Ontology rdf:about="&cryosat2;"/>
 
@@ -35,9 +33,9 @@
       <rdfs:label xml:lang="en">CryoSat-2 Product</rdfs:label>
       <rdfs:comment xml:lang="en">
       </rdfs:comment>
-      <rdfs:subClassOf rdf:resource="&drb;zip"/>
+      <rdfs:subClassOf rdf:resource="&drb;tgz"/>
       <drb:signature rdf:parseType="Resource">
-         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_.........._[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}\.zip</drb:nameMatch>
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_.........._[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}(\.tar\.gz|\.tgz|\.TGZ)</drb:nameMatch>
       </drb:signature>
    </owl:Class>
 
@@ -50,6 +48,7 @@
       <rdfs:label xml:lang="en">CryoSat-2 Product: netCDF</rdfs:label>
       <rdfs:comment xml:lang="en">
       </rdfs:comment>
+      <rdfs:subClassOf rdf:resource="&drb;item"/>
       <rdfs:subClassOf rdf:resource="&nc;netCDF"/>
       <drb:signature rdf:parseType="Resource">
          <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_.........._[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}\.nc</drb:nameMatch>
