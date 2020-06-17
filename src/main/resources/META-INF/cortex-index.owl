@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY owl  "http://www.w3.org/2002/07/owl#">
+  <!ENTITY drb  "http://www.gael.fr/drb#">
+  <!ENTITY cryosat2 "http://www.esa.int/cryosat2#"> 
+  <!ENTITY img  "http://www.gael.fr/drb/image#">
+  <!ENTITY nc "http://www.unidata.ucar.edu/netcdf#">
+]>
+
+<rdf:RDF xmlns:rdf  = "&rdf;"
+         xmlns:rdfs = "&rdfs;"
+         xmlns:owl  = "&owl;"
+         xmlns:nc   = "&nc;"
+         xmlns:drb  = "&drb;"
+         xmlns:cryosat2 = "&cryosat2;"
+         xmlns:img  = "&img;">
+
+   <owl:Ontology rdf:about="&cryosat2;"/>
+
+   <!--
+   Based on
+   https://earth.esa.int/documents/10174/125272/CryoSat_Product_Handbook
+   https://earth.esa.int/documents/10174/1514862/Earth_Explorer_Ground_Segment_File_Format_Standard
+   -->
+   
+   <!-- ========================================= -->
+   <!--                                           -->
+   <!--           CryoSat-2 PRODUCT               -->
+   <!--                                           -->
+   <!-- ========================================= -->
+
+   <owl:Class rdf:about="&cryosat2;product">
+      <rdfs:label xml:lang="en">CryoSat-2 Product</rdfs:label>
+      <rdfs:comment xml:lang="en">
+      </rdfs:comment>
+      <rdfs:subClassOf rdf:resource="&drb;zip"/>
+      <drb:signature rdf:parseType="Resource">
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_.........._[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}\.zip</drb:nameMatch>
+      </drb:signature>
+   </owl:Class>
+
+
+   <!-- ========================================= -->
+   <!-- NetCDF Product                            -->
+   <!-- ========================================= -->
+
+   <owl:Class rdf:about="&cryosat2;productNetCDF">
+      <rdfs:label xml:lang="en">CryoSat-2 Product: netCDF</rdfs:label>
+      <rdfs:comment xml:lang="en">
+      </rdfs:comment>
+      <rdfs:subClassOf rdf:resource="&nc;netCDF"/>
+      <drb:signature rdf:parseType="Resource">
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_.........._[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}\.nc</drb:nameMatch>
+      </drb:signature>
+   </owl:Class>
+
+
+   <!-- ========================================= -->
+   <!-- XML Header                                -->
+   <!-- ========================================= -->
+
+   <owl:Class rdf:about="&cryosat2;productXmlHeader">
+      <rdfs:label xml:lang="en">CryoSat-2 Product: XML Header</rdfs:label>
+      <rdfs:comment xml:lang="en">
+      </rdfs:comment>
+      <rdfs:subClassOf rdf:resource="&drb;item"/>
+      <rdfs:subClassOf rdf:resource="&drb;xml-content"/>
+      <drb:signature rdf:parseType="Resource">
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_.........._[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}\.HDR</drb:nameMatch>
+      </drb:signature>
+   </owl:Class>
+
+</rdf:RDF>
