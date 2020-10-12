@@ -24,35 +24,71 @@
    -->
    
    <!-- ========================================= -->
-   <!--                                           -->
-   <!--           CryoSat-2 PRODUCT               -->
-   <!--                                           -->
+   <!--      CryoSat-2 PRODUCT SIR_FDM_2_         -->
    <!-- ========================================= -->
 
-   <owl:Class rdf:about="&cryosat2;product">
-      <rdfs:label xml:lang="en">CryoSat-2 Product</rdfs:label>
+   <owl:Class rdf:about="&cryosat2;productSIRFDM2">
+      <rdfs:label xml:lang="en">CryoSat-2 Product SIR_FDM_2_</rdfs:label>
       <rdfs:comment xml:lang="en">
       </rdfs:comment>
       <rdfs:subClassOf rdf:resource="&drb;tgz"/>
       <drb:signature rdf:parseType="Resource">
-         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_(SIR_FDM_2_|SIR_GDR_2_|SIR_GOPM_2|SIR_GOPN_2|SIR_GOPR_2|SIR_GOP_2_|SIR_LRM_2_|SIR_SAR_2_|SIR_SIN_2_|SIR_GOP_2_)_[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}(\.tar\.gz|\.tgz|\.TGZ)</drb:nameMatch>
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_SIR_FDM_2__[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}(\.tar\.gz|\.tgz|\.TGZ)</drb:nameMatch>
+      </drb:signature>                                
+   </owl:Class>
+   
+
+   <!-- ========================================= -->
+   <!--      CryoSat-2 PRODUCT SIR2     _         -->
+   <!-- ========================================= -->
+   <owl:Class rdf:about="&cryosat2;productSIR2tar">
+      <rdfs:label xml:lang="en">CryoSat-2 Product SIR L2</rdfs:label>
+      <rdfs:comment xml:lang="en">
+      </rdfs:comment>
+      <rdfs:subClassOf rdf:resource="&drb;tgz"/>
+      <drb:signature rdf:parseType="Resource">
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_(SIR_GDR_2_|SIR_GOPM_2|SIR_GOPN_2|SIR_GOPR_2|SIR_GOP_2_|SIR_LRM_2_|SIR_SAR_2_|SIR_SIN_2_|SIR_GOP_2_)_[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}(\.tar\.gz|\.tgz|\.TGZ)</drb:nameMatch>
       </drb:signature>                                
    </owl:Class>
 
 
    <!-- ========================================= -->
+   <!-- CryoSat-2 Product ZIP                     -->
+   <!-- ========================================= -->
+
+   <owl:Class rdf:about="&cryosat2;productSIR2zip">
+      <rdfs:label xml:lang="en">CryoSat-2 Product: ZIP</rdfs:label>
+      <rdfs:comment xml:lang="en">
+      </rdfs:comment>
+      <rdfs:subClassOf rdf:resource="&drb;zip"/>
+      <drb:signature rdf:parseType="Resource">
+         <drb:nameMatch>CR2_(OFFL|NRT_|RPRO|TEST|LTA_)_(SIR_GDR_2_|SIR_GOPM_2|SIR_GOPN_2|SIR_GOPR_2|SIR_GOP_2_|SIR_LRM_2_|SIR_SAR_2_|SIR_SIN_2_)_[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}\.(zip|ZIP)</drb:nameMatch>
+      </drb:signature>
+   </owl:Class>
+   
+   <!-- ========================================= -->
    <!-- NetCDF Product                            -->
    <!-- ========================================= -->
 
-   <owl:Class rdf:about="&cryosat2;productNetCDF">
+   <owl:Class rdf:about="&cryosat2;productOceanNetCDF">
       <rdfs:label xml:lang="en">CryoSat-2 Product: netCDF</rdfs:label>
       <rdfs:comment xml:lang="en">
       </rdfs:comment>
       <rdfs:subClassOf rdf:resource="&drb;item"/>
-      <rdfs:subClassOf rdf:resource="&nc;netCDF"/>
       <drb:signature rdf:parseType="Resource">
-         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_(SIR_GDR_2_|SIR_GOPM_2|SIR_GOPN_2|SIR_GOPR_2|SIR_GOP_2_|SIR_LRM_2_|SIR_SAR_2_|SIR_SIN_2_|SIR_GOP_2_)_[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}\.nc</drb:nameMatch>
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_(SIR_GOPM_2|SIR_GOPN_2|SIR_GOPR_2|SIR_GOP_2_)_[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_C[0-9]{3}\.(nc|DBL)</drb:nameMatch>
+       </drb:signature>
+      <drb:implementationIdentifier>netcdf</drb:implementationIdentifier>
+   </owl:Class>
+   <owl:Class rdf:about="&cryosat2;productIceNetCDF">
+      <rdfs:label xml:lang="en">CryoSat-2 Product: netCDF</rdfs:label>
+      <rdfs:comment xml:lang="en">
+      </rdfs:comment>
+      <rdfs:subClassOf rdf:resource="&drb;item"/>
+      <drb:signature rdf:parseType="Resource">
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_(SIR_GDR_2_|SIR_LRM_2_|SIR_SAR_2_|SIR_SIN_2_)_[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_D[0-9]{3}\.(nc|DBL)</drb:nameMatch>
       </drb:signature>
+      <drb:implementationIdentifier>netcdf</drb:implementationIdentifier>
    </owl:Class>
 
 
@@ -73,21 +109,41 @@
    
    
    <!-- ========================================= -->
-   <!-- DBL File                                  -->
+   <!-- DBL File FDM                              -->
    <!-- ========================================= -->
 
-   <owl:Class rdf:about="&cryosat2;productFdmDbl">
-      <rdfs:label xml:lang="en">CryoSat-2 Product: Measurement Data Set</rdfs:label>
+   <owl:Class rdf:about="&cryosat2;productSIRFDM2dbl">
+      <rdfs:label xml:lang="en">CryoSat-2 Product: Measurement Data Set SIR_FDM_2_</rdfs:label>
       <rdfs:comment xml:lang="en">
       </rdfs:comment>
       <rdfs:subClassOf rdf:resource="&drb;item"/>
       <drb:signature rdf:parseType="Resource">
-         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_SIR_FDM_2__[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_.[0-9]{3}\.DBL</drb:nameMatch>
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_SIR_FDM_2__[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_C[0-9]{3}\.DBL</drb:nameMatch>
       </drb:signature>
       <drb:schemaLocation>
           xsd/SIR_FDM_2.xsd
       </drb:schemaLocation>
       <drb:implementationIdentifier>sdf</drb:implementationIdentifier>
    </owl:Class>
+   
+   
+   <!-- ========================================= -->
+   <!-- DBL File Ice L2 Baseline C                -->
+   <!-- ========================================= -->
+
+   <owl:Class rdf:about="&cryosat2;productIceL2Cdbl">
+      <rdfs:label xml:lang="en">CryoSat-2 Product: Measurement Data Set Ice Level-2 Baseline C products</rdfs:label>
+      <rdfs:comment xml:lang="en">
+      </rdfs:comment>
+      <rdfs:subClassOf rdf:resource="&drb;item"/>
+      <drb:signature rdf:parseType="Resource">
+         <drb:nameMatch>CS_(OFFL|NRT_|RPRO|TEST|LTA_)_(SIR_GDR_2_|SIR_LRM_2_|SIR_SAR_2_|SIR_SIN_2_)_[0-9]{8}T[0-9]{6}_[0-9]{8}T[0-9]{6}_C[0-9]{3}\.DBL</drb:nameMatch>
+      </drb:signature>
+      <drb:schemaLocation>
+          xsd/Ice_L2_C.xsd
+      </drb:schemaLocation>
+      <drb:implementationIdentifier>sdf</drb:implementationIdentifier>
+   </owl:Class>
+   
 
 </rdf:RDF>
