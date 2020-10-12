@@ -9,7 +9,7 @@
 	<groupId>eu.eodc.drb</groupId>
 	<artifactId>drbx-cortex-topic-cryosat-2</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 
 	<name>Drbx Cortex Topic for CryoSat-2</name>
 

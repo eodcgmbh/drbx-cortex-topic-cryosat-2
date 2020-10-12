@@ -582,7 +582,7 @@
   </xs:complexType>
   <!-- ========================================= -->
   <!--         SPECIFIC PRODUCT HEADER           -->
-  <!--                SIR_FDM_2                  -->
+  <!--                ICE L2 C                   -->
   <!-- ========================================= -->
   <xs:complexType name="SPH_TYPE">
     <xs:annotation>
@@ -1174,7 +1174,7 @@
   </xs:complexType>
   <!-- ========================================= -->
   <!--        DATASET DESCRIPTION HEADER         -->
-  <!--                SIR_FDM_2                  -->
+  <!--                ICE L2 C                   -->
   <!-- ========================================= -->
   <xs:complexType name="DSD_HEADER_TYPE">
     <xs:annotation>
@@ -1283,7 +1283,7 @@
     </xs:sequence>
   </xs:complexType>
   <!-- ========================================= -->
-  <!--     CRYOSAT SIR_FDM_2.DBL RECORD          -->
+  <!--      CRYOSAT ICE L2 C DBL RECORD          -->
   <!-- ========================================= -->
   <xs:complexType name="DBL_TYPE_RECORD">
     <xs:annotation>
@@ -1324,27 +1324,22 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 2: 20-Hz Time differences [0..19]  -->
-      <xs:element name="20_Hz_Time_Difference">
+      <!-- Field 2: Measurement mode (LRM/ SAR/ SIN/ SID ) -->
+      <xs:element name="Measurement_Mode" type="xs:unsignedLong">
         <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz Time differences [0..19]</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement mode (LRM/ SAR/ SIN/ SID )</xs:documentation>
           <xs:appinfo>
             <sdf:block>
-				<sdf:array>
-				  <sdf:length>4</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>8</sdf:length>
             </sdf:block>
           </xs:appinfo>
         </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:int"/>
-		</xs:simpleType>
       </xs:element>
-      <!-- Field 3: Latitude of measurement -->
+      <!-- Field 3: Latitude of orbit -->
       <xs:element name="Latitude" type="xs:int">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Latitude of measurement [1e-7 deg]</xs:documentation>
+          <xs:documentation xml:lang="en">Latitude of Orbit in WGS84 [1e-7 deg]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1353,27 +1348,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 4: 20-Hz Latitudes [0..19] -->
-      <xs:element name="20_Hz_Latitude">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz Latitudes [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>4</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:int"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 5: Longitude of measurement -->
+      <!-- Field 4: Longitude of orbit -->
       <xs:element name="Longitude" type="xs:int">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Longitude of measurement [1e-7 deg]</xs:documentation>
+          <xs:documentation xml:lang="en">Longitude of Orbit in WGS84 [1e-7 deg]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1382,27 +1360,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 6: 20-Hz Longitudes [0..19] -->
-      <xs:element name="20_Hz_Longitude">
+      <!-- Field 5: Altitude of COG above reference ellipsoid (interpolated value) -->
+      <xs:element name="Altitude" type="xs:int">
         <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz Longitudes [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>4</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:int"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 7: Record counter -->
-      <xs:element name="Record_Counter" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Record counter</xs:documentation>
+          <xs:documentation xml:lang="en">Altitude of COG above reference ellipsoid (interpolated value)</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1411,10 +1372,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 8: Measurement confidence flag -->
-      <xs:element name="Measurement_Confidence_Flag" type="xs:unsignedInt">
+      <!-- Field 6: Spacecraft Roll Angle -->
+      <xs:element name="Roll" type="xs:int">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement confidence flag</xs:documentation>
+          <xs:documentation xml:lang="en">Spacecraft Roll Angle [1e-7 deg]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1423,10 +1384,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 9: Altitude of COG above reference ellipsoid -->
-      <xs:element name="Altitude_COG" type="xs:int">
+      <!-- Field 7: Spacecraft Pitch Angle -->
+      <xs:element name="Pitch" type="xs:int">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Altitude of COG above reference ellipsoid [mm]</xs:documentation>
+          <xs:documentation xml:lang="en">Spacecraft Pitch Angle [1e-7 deg]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1435,37 +1396,20 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 10: 20-Hz Altitudes [0..19] -->
-      <xs:element name="20_Hz_Altitude_COG">
+      <!-- Field 8: Spacecraft Yaw Angle -->
+      <xs:element name="Yaw" type="xs:int">
         <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz Altitudes of COG above reference ellipsoid [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>4</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:int"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 11: Altitude rate derived from orbit -->
-      <xs:element name="Altitude_Rate" type="xs:short">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Altitude rate derived from orbit [mm/s]</xs:documentation>
+          <xs:documentation xml:lang="en">Spacecraft Yaw Angle [1e-7 deg]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length> 
+              <sdf:length>4</sdf:length>
             </sdf:block>
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 12: Spare -->
-      <xs:element name="Spare" type="xs:unsignedShort">
+      <!-- Field 9: Spare -->
+      <xs:element name="Spare" type="xs:short">
         <xs:annotation>
           <xs:documentation xml:lang="en">Spare</xs:documentation>
           <xs:appinfo>
@@ -1476,39 +1420,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 13: Range to ocean surface -->
-      <xs:element name="Range_To_Ocean_Surface" type="xs:unsignedInt">
+      <!-- Field 10: Number of valid Measurements in this record -->
+      <xs:element name="Number_Valid_Records" type="xs:unsignedShort">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Range to ocean surface [mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 14: 20-Hz Ocean Range [0..19] -->
-      <xs:element name="20_Hz_Ocean_Range">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz Ocean Ranges [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>4</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:unsignedInt"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 15: Standard deviation of 20Hz ocean range -->
-      <xs:element name="20_Hz_Ocean_Range_Std" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Standard deviation of 20Hz ocean range</xs:documentation>
+          <xs:documentation xml:lang="en">Number of valid Measurements in this record</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1516,109 +1431,8 @@
             </sdf:block>
           </xs:appinfo>
         </xs:annotation>
-      </xs:element>
-      <!-- Field 16: Number of 20Hz valid points for ocean range -->
-      <xs:element name="20_Hz_Ocean_Range_Number_Valid_Points" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Number of 20Hz valid points for ocean range</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 17: Ocean range average status flags -->
-      <xs:element name="Ocean_Range_Average_Status_Flags" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Ocean range average status flags</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 18: OCOG Range -->
-      <xs:element name="OCOG_Range" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">OCOG Range [mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 19: 20-Hz OCOG [0..19] -->
-      <xs:element name="20_Hz_OCOG_Range">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz OCOG Ranges [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>4</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:unsignedInt"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 20: Standard deviation of 20Hz OCOG range -->
-      <xs:element name="20_Hz_OCOG_Range_Std" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Standard deviation of 20Hz OCOG range</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 21: Number of 20Hz valid points for OCOG range -->
-      <xs:element name="20_Hz_OCOG_Range_Number_Valid_Points" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Number of 20Hz valid points for OCOG range</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 22: OCOG range average status flags -->
-      <xs:element name="OCOG_Range_Average_Status_Flags" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">OCOG range average status flags</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 23: Doppler correction -->
-      <xs:element name="Doppler_Correction" type="xs:short">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Doppler correction</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 24: Dry tropospheric correction -->
+      </xs:element>  
+      <!-- Field 11: Dry tropospheric correction -->
       <xs:element name="Dry_Tropospheric_Correction" type="xs:short">
         <xs:annotation>
           <xs:documentation xml:lang="en">Dry tropospheric correction</xs:documentation>
@@ -1630,7 +1444,7 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 25: Wet tropospheric correction -->
+      <!-- Field 12: Wet tropospheric correction -->
       <xs:element name="Wet_Tropospheric_Correction" type="xs:short">
         <xs:annotation>
           <xs:documentation xml:lang="en">Wet tropospheric correction</xs:documentation>
@@ -1642,7 +1456,7 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 26: Inverse barometer correction (IBC) -->
+      <!-- Field 13: Inverse barometer correction (IBC) -->
       <xs:element name="Inverse_Barometer_Correction" type="xs:short">
         <xs:annotation>
           <xs:documentation xml:lang="en">Inverse barometer correction (IBC)</xs:documentation>
@@ -1654,7 +1468,7 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 27: Dynamic atmospheric correction (DAC) -->
+      <!-- Field 14: Dynamic atmospheric correction (DAC) -->
       <xs:element name="Dynamic_Atmospheric_Correction" type="xs:short">
         <xs:annotation>
           <xs:documentation xml:lang="en">Dynamic atmospheric correction (DAC)</xs:documentation>
@@ -1666,7 +1480,7 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 28: Ionospheric correction -->
+      <!-- Field 15: Ionospheric correction -->
       <xs:element name="Ionospheric_Correction" type="xs:short">
         <xs:annotation>
           <xs:documentation xml:lang="en">Ionospheric correction</xs:documentation>
@@ -1678,7 +1492,7 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 29: Sea state bias correction from EM bias -->
+      <!-- Field 16: Sea state bias correction from EM bias -->
       <xs:element name="Sea_State_Bias" type="xs:short">
         <xs:annotation>
           <xs:documentation xml:lang="en">Sea state bias correction from EM bias</xs:documentation>
@@ -1690,35 +1504,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 30: Spare -->
-      <xs:element name="Spare" type="xs:unsignedShort" minOccurs="0" maxOccurs="unbounded">
+      <!-- Field 17: Elastic ocean tide [mm] --> 
+      <xs:element name="Elastic_Ocean_Tide" type="xs:short">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Spare</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-			  <sdf:occurrence>3</sdf:occurrence>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 31: Squared of significant wave height -->
-      <xs:element name="Squared_Significant_Wave_Height" type="xs:int">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Square of significant wave height[mm*mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length> 
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 32: Significant Wave Height -->
-      <xs:element name="Significant_Wave_Height" type="xs:short">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Significant Wave Height [mm]</xs:documentation>
+          <xs:documentation xml:lang="en">Elastic ocean tide [mm]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1727,40 +1516,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 33: Spare -->
-      <xs:element name="Spare" type="xs:unsignedShort" minOccurs="0" maxOccurs="unbounded">
+      <!-- Field 18: Long Period ocean tide [mm] --> 
+      <xs:element name="Long_Period_Ocean_Tide" type="xs:short">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Spare</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-			  <sdf:occurrence>1</sdf:occurrence>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 34: 20-Hz Squared SWH [0..19] -->
-      <xs:element name="20_Hz_Squared_SWH">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz Squared SWH [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>4</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:int"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 35: Standard deviation of 20-Hz Squared SWH -->
-      <xs:element name="20_Hz_Squared_SWH_Std" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Standard deviation of 20-Hz Squared SWH</xs:documentation>
+          <xs:documentation xml:lang="en">Long period ocean tide [mm]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1769,10 +1528,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 36: Number of 20Hz valid points for Squared SWH -->
-      <xs:element name="20_Hz_Squared_SWH_Number_Valid_Points" type="xs:unsignedShort">
+      <!-- Field 19: Ocean Loading tide [mm] --> 
+      <xs:element name="Ocean_Loading_Tide" type="xs:short">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Number of 20Hz valid points for squared SWH</xs:documentation>
+          <xs:documentation xml:lang="en">Ocean loading tide [mm]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -1781,272 +1540,7 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 37: Squared SWH average status flags -->
-      <xs:element name="Squared_SWH_Average_Status_Flags" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Squared SWH average status flags</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 38: Spare -->
-      <xs:element name="Spare" type="xs:unsignedShort" minOccurs="0" maxOccurs="unbounded">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Spare</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-			  <sdf:occurrence>1</sdf:occurrence>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 39: Corrected ocean backscatter coefficient -->
-      <xs:element name="Corrected_Ocean_Backscatter_Coefficient" type="xs:short">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Corrected ocean backscatter coefficient [dB/100]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 40: 20-Hz Ocean Backscatter Coefficient [0..19] -->
-      <xs:element name="20_Hz_Ocean_Backscatter">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz Ocean Backscatter Coefficient [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>2</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:short"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 41: Standard deviation of Ocean Backscatter Coefficient -->
-      <xs:element name="20_Hz_Ocean_Backscatter_Std" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Standard deviation of Ocean Backscatter Coefficient</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 42: Number of 20Hz valid points for Ocean Backscatter Coefficient -->
-      <xs:element name="20_Hz_Ocean_Backscatter_Number_Valid_Points" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Number of 20Hz valid points for Ocean Backscatter Coefficient</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 43: Ocean Backscatter Coefficient average status flags -->
-      <xs:element name="Ocean_Backscatter_Average_Status_Flags" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Ocean Backscatter Coefficient average status flags</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 44: Spare -->
-      <xs:element name="Spare" type="xs:unsignedShort" minOccurs="0" maxOccurs="unbounded">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Spare</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-			  <sdf:occurrence>1</sdf:occurrence>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 45: Corrected OCOG backscatter coefficient -->
-      <xs:element name="Corrected_OCOG_Backscatter_Coefficient" type="xs:short">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Corrected OCOG backscatter coefficient [dB/100]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 46: 20-Hz OCOG Backscatter Coefficient [0..19] -->
-      <xs:element name="20_Hz_OCOG_Backscatter">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz OCOG Backscatter Coefficient [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>2</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:short"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 47: Standard deviation of OCOG Backscatter Coefficient -->
-      <xs:element name="20_Hz_OCOG_Backscatter_Std" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Standard deviation of OCOG Backscatter Coefficient</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 48: Number of 20Hz valid points for OCOG Backscatter Coefficient -->
-      <xs:element name="20_Hz_OCOG_Backscatter_Number_Valid_Points" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Number of 20Hz valid points for OCOG Backscatter Coefficient</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 49: OCOG Backscatter Coefficient average status flags -->
-      <xs:element name="OCOG_Backscatter_Average_Status_Flags" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">OCOG Backscatter Coefficient average status flags</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 50: Off-nadir angle of the satellite from platform data [10-4 deg] --> 
-      <xs:element name="Off_Nadir_Angle" type="xs:int">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Off-nadir angle of the satellite from platform data [10-4 deg]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 51: Spare -->
-      <xs:element name="Spare" type="xs:unsignedShort" minOccurs="0" maxOccurs="unbounded">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Spare</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-			  <sdf:occurrence>2</sdf:occurrence>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 52: Mean Surface Height [mm] --> 
-      <xs:element name="Mean_Surface_Height" type="xs:int">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Mean Surface Height [mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 53: Geoid Height [mm] --> 
-      <xs:element name="Geoid_Height" type="xs:int">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Geoid Height [mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 54: Ocean Depth / Land elevation [mm] --> 
-      <xs:element name="Ocean_Depth_Land_Elevation" type="xs:int">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Ocean Depth / Land elevation [mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>4</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 55: Total geocentric ocean tide [mm] --> 
-      <xs:element name="Total_Geocentric_Ocean_Tide" type="xs:short">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Total geocentric ocean tide [mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 56: Long period tide [mm] --> 
-      <xs:element name="Long_Period_Tide" type="xs:short">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Long period tide [mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 57: Tidal loading height [mm] --> 
-      <xs:element name="Tidal_Loading_Height" type="xs:short">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Tidal loading height [mm]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 58: Solid earth tide [mm] --> 
+      <!-- Field 20: Solid earth tide [mm] --> 
       <xs:element name="Solid_Earth_Tide" type="xs:short">
         <xs:annotation>
           <xs:documentation xml:lang="en">Solid Earth Tide [mm]</xs:documentation>
@@ -2058,10 +1552,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 59: Geocentric Pole Tide [mm] --> 
-      <xs:element name="Geocentric_Pole_Tide" type="xs:short">
+      <!-- Field 21: Geocentric polar tide [mm] --> 
+      <xs:element name="Geocentric_Polar_Tide" type="xs:short">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Geocentric Pole Tide [mm]</xs:documentation>
+          <xs:documentation xml:lang="en">Geocentric polar tide [mm]</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -2070,10 +1564,10 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 60: Altimetric wind speed [mm/s] --> 
-      <xs:element name="Altimetric_Wind_Speed" type="xs:short">
+      <!-- Field 22: Spare -->
+      <xs:element name="Spare" type="xs:short">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Altimetric wind speed [mm/s]</xs:documentation>
+          <xs:documentation xml:lang="en">Spare</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -2082,51 +1576,22 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 61: U-component of the model wind vector [mm/s] --> 
-      <xs:element name="Wind_Vector_U" type="xs:short">
+      <!-- Field 23: Surface Type Flag -->
+      <xs:element name="Measurement_Mode" type="xs:unsignedLong">
         <xs:annotation>
-          <xs:documentation xml:lang="en">U-component of the model wind vector [mm/s]</xs:documentation>
+          <xs:documentation xml:lang="en">Surface type flag</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
+              <sdf:length>8</sdf:length>
             </sdf:block>
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 62: V-component of the model wind vector [mm/s] --> 
-      <xs:element name="Wind_Vector_V" type="xs:short">
+      <!-- Field 24: MSS Geoid from model -->
+      <xs:element name="MSS_Geoid" type="xs:int">
         <xs:annotation>
-          <xs:documentation xml:lang="en">V-component of the model wind vector [mm/s]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-              <sdf:encoding>BINARY</sdf:encoding>
-              <sdf:length>2</sdf:length>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <!-- Field 63: 20-Hz Ku-band peakiness [0..19] -->
-      <xs:element name="20_Hz_Ku_Peakiness">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">20-Hz Ku-band peakiness [0..19]</xs:documentation>
-          <xs:appinfo>
-            <sdf:block>
-				<sdf:array>
-				  <sdf:length>2</sdf:length>
-				  <sdf:occurrence>20</sdf:occurrence>
-				</sdf:array>
-            </sdf:block>
-          </xs:appinfo>
-        </xs:annotation>
-        <xs:simpleType>
-			<xs:list itemType="xs:short"/>
-		</xs:simpleType>
-      </xs:element>
-      <!-- Field 64: Ocean Retracking Quality Flags -->
-      <xs:element name="Ocean_Retracking_Quality_Flags" type="xs:unsignedInt">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">Ocean Retracking Quality Flags</xs:documentation>
+          <xs:documentation xml:lang="en">MSS / Geoid from model</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -2135,10 +1600,22 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 65: Altimeter Surface Type Flag -->
-      <xs:element name="Altimeter_Surface_Type_Flag" type="xs:unsignedShort">
+      <!-- Field 25: Ocean Depth from model -->
+      <xs:element name="Ocean_Depth" type="xs:int">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Altimeter Surface Type Flag</xs:documentation>
+          <xs:documentation xml:lang="en">Ocean depth / land elevation from model</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 26: Ice concentration --> 
+      <xs:element name="Ice_Concentration" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Ice concentration</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
@@ -2147,15 +1624,381 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <!-- Field 66: Spare -->
-      <xs:element name="Spare" type="xs:unsignedShort" minOccurs="0" maxOccurs="unbounded">
+      <!-- Field 27: Snow Depth [mm] --> 
+      <xs:element name="Snow_Depth" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Snow Depth [mm]</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 28: Snow Density --> 
+      <xs:element name="Snow_Density" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Snow Density</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 29: Spare -->
+      <xs:element name="Spare" type="xs:unsignedShort">
         <xs:annotation>
           <xs:documentation xml:lang="en">Spare</xs:documentation>
           <xs:appinfo>
             <sdf:block>
               <sdf:encoding>BINARY</sdf:encoding>
               <sdf:length>2</sdf:length>
-			  <sdf:occurrence>1</sdf:occurrence>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 30: Corrections status flags -->
+      <xs:element name="Corrections_Status_Flags" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Corrections status flags</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 31: Significant Wave Height --> 
+      <xs:element name="Significant_Wave_Height" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Significant Wave Height</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 32: Wind Speed --> 
+      <xs:element name="Wind_Speed" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Wind Speed</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 33: Spare -->
+      <xs:element name="Spare" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Spare</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Spare" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Spare</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 34-54: Measurements group -->
+        <xs:element name="Measurements">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                </xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+                <xs:sequence>
+                   <xs:element name="DSD" type="Measurements_Type"
+                               minOccurs="0" maxOccurs="unbounded">
+                       <xs:annotation>
+                           <xs:appinfo>
+                               <sdf:block>
+                                  <sdf:occurrence>20</sdf:occurrence>
+                               </sdf:block>
+                           </xs:appinfo>
+                       </xs:annotation>
+                   </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+  </xs:complexType>  
+
+  <!-- ========================================= -->
+  <!--      CRYOSAT ICE L2 C DBL RECORD          -->
+  <!-- ========================================= -->
+  <xs:complexType name="Measurements_Type">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Measurements group type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <!-- Field 34: delta time-->
+      <xs:element name="delta_time" type="xs:int">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">delta time (to give 20Hz time)</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>  
+      <!-- Field 35: Latitude of measurement-->
+      <xs:element name="Latitude_Measurement" type="xs:int">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Latitude of measurement</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>  
+      <!-- Field 36: Longitude of measurement-->
+      <xs:element name="Longitude_Measurement" type="xs:int">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Longitude of measurement</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>  
+      <!-- Field 37: Height retracker 1-->
+      <xs:element name="Height_Surface_Retracker1" type="xs:int">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Height of surface w.r.t. reference ellipsoid (retracker 1) </xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>  
+      <!-- Field 38: Height retracker 2-->
+      <xs:element name="Height_Surface_Retracker2" type="xs:int">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Height of surface w.r.t. reference ellipsoid (retracker 2) </xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>  
+      <!-- Field 39: Height retracker 3-->
+      <xs:element name="Height_Surface_Retracker3" type="xs:int">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Height of surface w.r.t. reference ellipsoid (retracker 3) </xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>  
+      <!-- Field 40: Backscatter (retracker 1) --> 
+      <xs:element name="Backscatter_Retracker1" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Backscatter (sigma-zero) (retracker1)</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 41: Backscatter (retracker 2) --> 
+      <xs:element name="Backscatter_Retracker2" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Backscatter (sigma-zero) (retracker2)</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 42: Backscatter (retracker 3) --> 
+      <xs:element name="Backscatter_Retracker3" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Backscatter (sigma-zero) (retracker3)</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 43: Freeboard --> 
+      <xs:element name="Freeboard" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Freeboard</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 44: Interpolated Sea Surface Height Anomaly --> 
+      <xs:element name="Interpolated_Sea_Surface_Height_Anomaly" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Interpolated Sea Surface Height Anomaly</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 45: Number of interpolated records for SSHA --> 
+      <xs:element name="Number_Interpolated_Records_SSHA" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Number of interpolated records for SSHA</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 46: SSHA Interpolation Quality --> 
+      <xs:element name="SSHA_Interpolation_Quality" type="xs:short">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">SSHA Interpolation Quality</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 47: Peakiness --> 
+      <xs:element name="Peakiness" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Peakiness</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 48: Number of Echoes or Beams averaged --> 
+      <xs:element name="Number_Echoes_Beams" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Number of Echoes or Beams averaged</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 49: Spare --> 
+      <xs:element name="Spare" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Spare</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>2</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 50: Quality flags --> 
+      <xs:element name="Quality_Flags" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Quality flags</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 51: Correction Application Flag --> 
+      <xs:element name="Correction_Application_Flag" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Correction Application Flag</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 52: Retracker 1 Quality Value --> 
+      <xs:element name="Retracker1_Quality_Value" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Retracker 1 Quality Value</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 53: Retracker 2 Quality Value --> 
+      <xs:element name="Retracker2_Quality_Value" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Retracker 2 Quality Value</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
+            </sdf:block>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <!-- Field 54: Retracker 3 Quality Value --> 
+      <xs:element name="Retracker3_Quality_Value" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Retracker 3 Quality Value</xs:documentation>
+          <xs:appinfo>
+            <sdf:block>
+              <sdf:encoding>BINARY</sdf:encoding>
+              <sdf:length>4</sdf:length>
             </sdf:block>
           </xs:appinfo>
         </xs:annotation>
@@ -2211,7 +2054,7 @@
                        <xs:annotation>
                            <xs:appinfo>
                                <sdf:block>
-                                  <sdf:occurrence query="../../DSDS/DSD[matches(DS_NAME, '.*SIR_FDM_L2.*')]/NUM_DSR"/>
+                                  <sdf:occurrence query="../../DSDS/DSD[matches(DS_NAME, '.*SIR_LRM_L2.*') or matches(DS_NAME, '.*SIR_FDM_L2.*') or matches(DS_NAME, '.*SIR_SAR_L2.*') or matches(DS_NAME, '.*SIR_SIN_L2.*') or matches(DS_NAME, '.*SIR_SID_L2.*') or matches(DS_NAME, '.*SIR_GDR_2.*')]/NUM_DSR"/>
                                </sdf:block>
                            </xs:appinfo>
                        </xs:annotation>
